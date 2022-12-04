@@ -1,54 +1,20 @@
-# Geo Location
+# Stock market portfolio daily info
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-get location from user
+get user Stock market portfolio daily info
 
 ## Overview
 
-This project was generated using
-[SolarEdge Python Package Template](http://gitlab-ng.solaredge.local/solaredge-shared-source/projectk8s/solaredge-python-package-template).
-
-To create new projects, use [SolarEdge Initializer](http://initializer.solaredge.local).
-
-**We encourage users to edit this README with their own content.**
+In order to add new stock for your portfolio please use UI
 
 ## Generation Parameters
 The following parameters were used to generate this project:
 
-```json
-{
-    "project_slug": "geo-location",
-    "project_description": "get location from user",
-    "package_name": "trading-bot",
-    "package_title": "Geo Location",
-    "project_maintainer": "tomer.gur@solaredge.com",
-    "publish_as_package": "True",
-    "solaredge_group": "home-automation",
-    "_template": "git@gitlab-ng.solaredge.local:solaredge-shared-source/projectk8s/solaredge-python-package-template.git"
-    
-}
-```
 
 ## Getting Started
 ### Installation
 You can install this package from Home Automation's PyPi repository like so:
-
-```shell
-pip install geo-location -i http://docker-esh.solaredge.com/artifactory/api/pypi/home-automation-pypi/simple
-```
-
-If your project uses Poetry, you need to first add Home Automation's PyPi repository like so:
-
-```shell
-poetry config repositories.iotp-pypi http://docker-esh.solaredge.com/artifactory/api/pypi/home-automation-pypi/simple
-```
-
-Than you can add the package as you normally would:
-
-```shell
-poetry add geo-location
-```
 
 ### Dependencies
 The package requires Python 3.9 or higher to get started, and has several dependencies which are specified in `pyproject.toml`.

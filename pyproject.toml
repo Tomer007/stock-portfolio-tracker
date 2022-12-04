@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "geo-location"
+version = "0.1.0"
+description = "get location from user"
+authors = ["tomer.gur@solaredge.com"]
+
+[[tool.poetry.source]]
+name = "home-automation-pypi"
+url = "http://docker-esh.solaredge.com:80/artifactory/api/pypi/home-automation-pypi/simple"
+
+[tool.poetry.dependencies]
+python = ">=3.9, <3.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"
+pylint = "^2.9.3"
+pre-commit = "^2.13.0"
+coverage = "^5.5"
+mypy = "^0.910"
+pytest-cov = "^2.12.1"
+PyHamcrest = "^2.0.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120

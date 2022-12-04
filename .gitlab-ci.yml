@@ -1,0 +1,37 @@
+stages:
+  - build
+  - deploy
+
+python:
+  image: matanrubin/python-poetry:3.9
+  stage: build
+  script:
+    # Instruct poetry to keep the .venv directory in the current working directory so gitlab would cache it
+    - poetry config cache-dir ${CI_PROJECT_DIR}/.poetry-cache
+    - poetry config virtualenvs.path ${CI_PROJECT_DIR}/.poetry-cache/venv
+
+    - make bootstrap
+    - make check
+    - make coverage
+    - make package
+  cache:
+    paths:
+      - ${CI_PROJECT_DIR}/.poetry-cache
+      - ${CI_PROJECT_DIR}/.cache/pre-commit
+publish:
+  image: matanrubin/python-poetry:3.9
+  stage: deploy
+  cache:
+    paths:
+      - ${CI_PROJECT_DIR}/.poetry-cache
+  script:
+    # Instruct poetry to keep the .venv directory in the current working directory so gitlab would cache it
+    - poetry config cache-dir ${CI_PROJECT_DIR}/.poetry-cache
+    - poetry config virtualenvs.path ${CI_PROJECT_DIR}/.poetry-cache/venv
+
+    # Publish to artifactory
+    - poetry config repositories.home-automation-pypi ${PYPI_REPO}
+    - poetry version 0.1.${CI_PIPELINE_IID}
+    - poetry publish --build --repository home-automation-pypi --username ${PYPI_USER} --password ${PYPI_PASSWORD}
+  only:
+    - master
